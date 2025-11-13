@@ -2,7 +2,7 @@ name: Deploy website
 on:
   push:
     branches:
-      - main
+      - master
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -30,4 +30,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy
-        run: echo "Deploying..."
+        uses: actions/upload-artifacts@v4
+        with:
+          name: dist-files
+          path: |
+            dist
+            package.json
